@@ -10,4 +10,8 @@ RUN set -x \
     && apt-get install -yq libstdc++6:i386 zlib1g:i386 libncurses5:i386 --no-install-recommends \
     && mkdir -p "${ANDROID_HOME}" \
     && curl -Ls http://dl.google.com/android/android-sdk_r${ANDROID_SDK_VERSION}-linux.tgz \
-        | tar -xz --directory "${ANDROID_HOME}" --strip-components=1 --no-same-owner
+        | tar -xz --directory "${ANDROID_HOME}" --strip-components=1 --no-same-owner \
+    && echo 'y' | ${ANDROID_HOME}/tools/android update sdk -u -a -t \
+            tools,platform-tools,build-tools-23.0.3
+
+ENV PATH $PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
