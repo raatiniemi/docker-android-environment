@@ -12,6 +12,8 @@ RUN set -x \
     && curl -Ls http://dl.google.com/android/android-sdk_r${ANDROID_SDK_VERSION}-linux.tgz \
         | tar -xz --directory "${ANDROID_HOME}" --strip-components=1 --no-same-owner \
     && echo 'y' | ${ANDROID_HOME}/tools/android update sdk -u -a -t \
-            tools,platform-tools,build-tools-23.0.3
+            tools,platform-tools,build-tools-23.0.3 \
+    && echo 'y' | ${ANDROID_HOME}/tools/android update sdk -u -a -t \
+            android-23,android-22,android-21
 
 ENV PATH $PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
