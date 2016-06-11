@@ -14,6 +14,8 @@ RUN set -x \
     && echo 'y' | ${ANDROID_HOME}/tools/android update sdk -u -a -t \
             tools,platform-tools,build-tools-23.0.3 \
     && echo 'y' | ${ANDROID_HOME}/tools/android update sdk -u -a -t \
-            android-23,android-22,android-21
+            android-23,android-22,android-21 \
+    && echo 'y' | ${ANDROID_HOME}/tools/android update sdk -u -a -t \
+            extra-android-support,extra-android-m2repository
 
 ENV PATH $PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
