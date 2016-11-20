@@ -1,7 +1,7 @@
 FROM raatiniemi/gradle:latest
 MAINTAINER Tobias Raatiniemi <raatiniemi@gmail.com>
 
-ENV ANDROID_SDK_VERSION 25.2.2
+ENV ANDROID_SDK_VERSION 25.2.3
 ENV ANDROID_HOME /opt/android-sdk
 ENV ANDROID_TOOLS_ZIP tools_r${ANDROID_SDK_VERSION}-linux.zip
 
