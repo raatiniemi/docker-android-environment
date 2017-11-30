@@ -15,7 +15,7 @@ RUN set -x \
     && echo 'y' | ${ANDROID_HOME}/tools/android update sdk -u -a -t \
             tools,platform-tools,build-tools-27.0.1 \
     && echo 'y' | ${ANDROID_HOME}/tools/android update sdk -u -a -t \
-            android-25,android-24,android-23,android-22,android-21,android-19,android-18,android-17,android-16 \
+            android-25,android-24,android-23,android-22,android-21 \
     && echo 'y' | ${ANDROID_HOME}/tools/android update sdk -u -a -t \
             extra-android-support,extra-android-m2repository
 
