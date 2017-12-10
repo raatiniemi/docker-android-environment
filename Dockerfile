@@ -1,4 +1,4 @@
-FROM raatiniemi/gradle:latest
+FROM openjdk:8
 MAINTAINER Tobias Raatiniemi <raatiniemi@gmail.com>
 
 ENV ANDROID_TOOLS_VERSION 25.2.5
