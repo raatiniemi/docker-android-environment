@@ -13,7 +13,7 @@ RUN set -x \
     && curl -O -Ls http://dl.google.com/android/repository/${ANDROID_TOOLS_ZIP} \
     && unzip -qq ${ANDROID_TOOLS_ZIP} -d "${ANDROID_HOME}" && rm ${ANDROID_TOOLS_ZIP} \
     && echo 'y' | ${ANDROID_HOME}/tools/android update sdk -u -a -t \
-            tools,platform-tools,build-tools-27.0.1 \
+            tools,platform-tools \
     && echo 'y' | ${ANDROID_HOME}/tools/android update sdk -u -a -t \
             extra-android-support,extra-android-m2repository
 
