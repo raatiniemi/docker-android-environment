@@ -1,5 +1,9 @@
 # android-environment
 
+[![Docker Automated build](https://img.shields.io/docker/automated/raatiniemi/android-environment.svg)](https://hub.docker.com/r/raatiniemi/android-environment/)
+[![Docker Build Status](https://img.shields.io/docker/build/raatiniemi/android-environment.svg)](https://hub.docker.com/r/raatiniemi/android-environment/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/raatiniemi/android-environment.svg)](https://hub.docker.com/r/raatiniemi/android-environment/)
+
 Docker container for building Android applications in an CI/CD pipeline. The
 container comes preinstalled with:
 
