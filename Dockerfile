@@ -1,9 +1,8 @@
 FROM openjdk:8
 MAINTAINER Tobias Raatiniemi <raatiniemi@gmail.com>
 
-ENV ANDROID_TOOLS_VERSION 25.2.5
 ENV ANDROID_HOME /opt/android-sdk
-ENV ANDROID_TOOLS_ZIP tools_r${ANDROID_TOOLS_VERSION}-linux.zip
+ENV ANDROID_TOOLS_ZIP sdk-tools-linux-4333796.zip
 
 RUN set -x \
     && dpkg --add-architecture i386 \
