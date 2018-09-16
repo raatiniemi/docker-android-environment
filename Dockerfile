@@ -11,9 +11,7 @@ RUN set -x \
     && mkdir -p "${ANDROID_HOME}" \
     && curl -O -Ls https://dl.google.com/android/repository/${ANDROID_TOOLS_ZIP} \
     && unzip -qq ${ANDROID_TOOLS_ZIP} -d "${ANDROID_HOME}" && rm ${ANDROID_TOOLS_ZIP} \
-    && echo 'y' | ${ANDROID_HOME}/tools/android update sdk -u -a -t \
-            tools,platform-tools \
-    && echo 'y' | ${ANDROID_HOME}/tools/android update sdk -u -a -t \
-            extra-android-support,extra-android-m2repository
+    && yes | ${ANDROID_HOME}/tools/bin/sdkmanager platform-tools \
+    && yes | ${ANDROID_HOME}/tools/bin/sdkmanager extra:android:m2repository
 
 ENV PATH $PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
