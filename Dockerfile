@@ -10,7 +10,7 @@ RUN set -x \
     && apt-get update \
     && apt-get install -yq libstdc++6:i386 zlib1g:i386 libncurses5:i386 --no-install-recommends \
     && mkdir -p "${ANDROID_HOME}" \
-    && curl -O -Ls http://dl.google.com/android/repository/${ANDROID_TOOLS_ZIP} \
+    && curl -O -Ls https://dl.google.com/android/repository/${ANDROID_TOOLS_ZIP} \
     && unzip -qq ${ANDROID_TOOLS_ZIP} -d "${ANDROID_HOME}" && rm ${ANDROID_TOOLS_ZIP} \
     && echo 'y' | ${ANDROID_HOME}/tools/android update sdk -u -a -t \
             tools,platform-tools \
