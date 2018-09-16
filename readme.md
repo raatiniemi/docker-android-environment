@@ -1,3 +1,37 @@
-# Docker container for building Android applications
+# android-environment
 
-* `raatiniemi/android-environment:latest`
+Docker container for building Android applications in an CI/CD pipeline. The
+container comes preinstalled with:
+
+* Android tools SDK
+* Platform tools
+* m2repository
+
+Both the Android build tools and APIs have to be manually installed using the
+`sdkmanager` to reduce image size since not all applications have the same needs.
+
+## Usage
+
+The [container image is available at Docker Hub](https://hub.docker.com/r/raatiniemi/android-environment/)
+via `raatiniemi/android-environment:latest`.
+
+### Install additional Android tools
+
+In order to install additional Android tools the use of `sdkmanager` is
+recommended, and when using the `sdkmanager` the license must be accepted.
+
+The following is a sample script for installing the `build-tools` aswell as a
+version of the Android API.
+
+```bash
+function accept_license_and_install {
+  yes | "${ANDROID_HOME}/tools/bin/sdkmanager" $1 1>/dev/null;
+  if [ $? -ne 0 ]; then
+    echo "Failed to install and accept licenses for ${1}";
+    exit 1;
+  fi
+}
+
+accept_license_and_install "build-tools;27.0.3";
+accept_license_and_install "platforms;android-27";
+```
