@@ -17,8 +17,7 @@ Both the Android build tools and APIs have to be manually installed using the
 ## Usage
 
 The [container image is available at Docker Hub](https://hub.docker.com/r/raatiniemi/android-environment/)
-via `raatiniemi/android-environment:latest`, or `raatiniemi/android-environment:gcloud-latest`
-with support for `gcloud`.
+via `raatiniemi/android-environment:latest`.
 
 ### Install additional Android tools
 
