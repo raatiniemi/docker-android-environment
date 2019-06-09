@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+PACKAGES="libstdc++6:i386 zlib1g:i386 libncurses5:i386";
+
+dpkg --add-architecture i386;
+apt-get -qq update &>/dev/null
+apt-get -qq install -y $PACKAGES --no-install-recommends &>/dev/null
