@@ -11,15 +11,13 @@ FROM openjdk:8
 LABEL maintainer="Tobias Raatiniemi <raatiniemi@gmail.com>"
 
 ENV ANDROID_HOME /opt/android-sdk
+ENV PATH $PATH:${ANDROID_HOME}/tools/bin
 
-COPY bin/install-via-sdkmanager /bin
 COPY --from=builder /build/android ${ANDROID_HOME}
 
 RUN set -x \
   && dpkg --add-architecture i386 \
   && apt-get update \
   && apt-get install -y libstdc++6:i386 zlib1g:i386 libncurses5:i386 --no-install-recommends \
-  && install-via-sdkmanager tools \
-  && install-via-sdkmanager platform-tools
-
-ENV PATH $PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+  && yes | sdkmanager tools \
+  && yes | sdkmanager platform-tools
