@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+CONFIGURATION_DIRECTORY="~/.android";
+
 if [ -z "${ANDROID_HOME}" ]; then
   >&2 echo "No home directory defined using ANDROID_HOME.";
   exit 1;
@@ -8,5 +10,8 @@ if [ -z "${1}" ]; then
   >&2 echo "${0} package";
   exit 1;
 fi;
+
+mkdir -p "${CONFIGURATION_DIRECTORY}"
+touch "${CONFIGURATION_DIRECTORY}/repositories.cfg"
 
 yes | ${ANDROID_HOME}/tools/bin/sdkmanager $1 >/dev/null;
