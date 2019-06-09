@@ -1,5 +1,5 @@
 FROM openjdk:8
-MAINTAINER Tobias Raatiniemi <raatiniemi@gmail.com>
+LABEL maintainer="Tobias Raatiniemi <raatiniemi@gmail.com>"
 
 ENV ANDROID_HOME /opt/android-sdk
 ENV ANDROID_TOOLS_ZIP sdk-tools-linux-4333796.zip
