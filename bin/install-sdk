@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
+ANDROID_TOOLS_ZIP="sdk-tools-linux-4333796.zip";
+
 if [ -z "${ANDROID_HOME}" ]; then
   >&2 echo "No home directory defined using ANDROID_HOME.";
-  exit 1;
-fi;
-if [ -z "${ANDROID_TOOLS_ZIP}" ]; then
-  echo "No android tools zip basename defined using ANDROID_TOOLS_ZIP.";
   exit 1;
 fi;
 
