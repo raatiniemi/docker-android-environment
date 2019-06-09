@@ -8,3 +8,14 @@ render_template () {
 }
 
 render_template > "Dockerfile";
+
+VERSIONS=("28")
+for VERSION in ${VERSIONS[*]}; do
+  if [ ! -d "${VERSION}" ]; then
+    echo "Create directory for version: ${VERSION}";
+    mkdir "${VERSION}";
+  fi;
+
+  INSTALL_ANDROID_API="yes | sdkmanager \"platforms;android-${VERSION}\"";
+  render_template " \&\& ${INSTALL_ANDROID_API}" > "${VERSION}/Dockerfile";
+done;
