@@ -12,7 +12,6 @@ RUN set -x \
     && curl -O -Ls https://dl.google.com/android/repository/${ANDROID_TOOLS_ZIP} \
     && unzip -qq ${ANDROID_TOOLS_ZIP} -d "${ANDROID_HOME}" && rm ${ANDROID_TOOLS_ZIP} \
     && yes | ${ANDROID_HOME}/tools/bin/sdkmanager tools \
-    && yes | ${ANDROID_HOME}/tools/bin/sdkmanager platform-tools \
-    && yes | ${ANDROID_HOME}/tools/bin/sdkmanager "extras;android;m2repository"
+    && yes | ${ANDROID_HOME}/tools/bin/sdkmanager platform-tools
 
 ENV PATH $PATH:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
