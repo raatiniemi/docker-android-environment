@@ -24,4 +24,4 @@ RUN set -x \
   && apt-get update \
   && apt-get install -y libstdc++6:i386 zlib1g:i386 libncurses5:i386 --no-install-recommends \
   && yes | sdkmanager tools \
-  && yes | sdkmanager platform-tools
+  && yes | sdkmanager platform-tools && yes | sdkmanager "platforms;android-29"
