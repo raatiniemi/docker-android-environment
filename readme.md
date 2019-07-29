@@ -29,7 +29,7 @@ version of the Android API.
 
 ```bash
 function accept_license_and_install {
-  yes | "${ANDROID_HOME}/tools/bin/sdkmanager" $1 1>/dev/null;
+  yes | sdkmanager $1 1>/dev/null;
   if [ $? -ne 0 ]; then
     echo "Failed to install and accept licenses for ${1}";
     exit 1;
