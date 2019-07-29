@@ -9,7 +9,6 @@ container comes preinstalled with:
 
 * Android tools SDK
 * Platform tools
-* m2repository
 
 Both the Android build tools and APIs have to be manually installed using the
 `sdkmanager` to reduce image size since not all applications have the same needs.
