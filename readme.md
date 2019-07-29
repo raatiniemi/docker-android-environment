@@ -30,7 +30,7 @@ version of the Android API.
 function accept_license_and_install {
   yes | sdkmanager $1 1>/dev/null;
   if [ $? -ne 0 ]; then
-    echo "Failed to install and accept licenses for ${1}";
+    echo "Failed to accept license and install ${1}";
     exit 1;
   fi
 }
