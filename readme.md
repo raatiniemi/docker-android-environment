@@ -44,9 +44,9 @@ available where the Android API have been preinstalled.
 
 This version is available using another tag, e.g.:
 
-* `android-28` for the Android API 28 preinstalled.
-* `android-29` for the Android API 29 preinstalled.
-* `android-30` for the Android API 30 preinstalled.
+* `android-28-latest` for the Android API 28 preinstalled.
+* `android-29-latest` for the Android API 29 preinstalled.
+* `android-30-latest` for the Android API 30 preinstalled.
 
 *The build tools are not installed since these are installed when the
 `gradlew` command is executed.*
