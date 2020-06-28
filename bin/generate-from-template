@@ -9,7 +9,7 @@ render_template () {
 
 render_template > "Dockerfile";
 
-VERSIONS=("28" "29")
+VERSIONS=("28" "29" "30")
 for VERSION in ${VERSIONS[*]}; do
   if [ ! -d "${VERSION}" ]; then
     echo "Create directory for version: ${VERSION}";
