@@ -23,5 +23,10 @@ RUN set -x \
   && dpkg --add-architecture i386 \
   && apt-get update \
   && apt-get install -y libstdc++6:i386 zlib1g:i386 libncurses5:i386 --no-install-recommends \
+  && groupadd -g 10001 android && useradd -m -N -g 10001 -u 10001 android \
+  && chown -R android:android ${ANDROID_HOME} \
   && yes | sdkmanager tools \
   && yes | sdkmanager platform-tools
+
+USER android:android
+WORKDIR /home/android
