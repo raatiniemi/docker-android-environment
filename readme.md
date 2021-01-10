@@ -4,6 +4,7 @@
 [![Docker Automated build](https://img.shields.io/docker/automated/raatiniemi/android-environment.svg)](https://hub.docker.com/r/raatiniemi/android-environment/)
 [![Docker Build Status](https://img.shields.io/docker/build/raatiniemi/android-environment.svg)](https://hub.docker.com/r/raatiniemi/android-environment/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/raatiniemi/android-environment.svg)](https://hub.docker.com/r/raatiniemi/android-environment/)
+[![Docker Image Size](https://img.shields.io/docker/image-size/raatiniemi/android-environment/latest)](https://hub.docker.com/r/raatiniemi/android-environment/)
 
 Docker container image for building Android applications in an CI/CD pipeline.
 
