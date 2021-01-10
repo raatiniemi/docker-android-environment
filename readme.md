@@ -52,3 +52,11 @@ This version is available using another tag, e.g.:
 
 *The build tools are not installed since these are installed when the
 `gradlew` command is executed.*
+
+### Using different timezones
+
+In the applications that I work on we sometimes have to override the
+default timezone because the applications do not fully support
+different timezones. Since the migration from using the root user to a
+separate build user the previous practice of writing to `/etc/timezone`
+do no longer work, instead the `TZ` environment variable should be used.
