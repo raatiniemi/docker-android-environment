@@ -22,5 +22,6 @@ RUN set -x \
   && dpkg --add-architecture i386 \
   && apt-get update \
   && apt-get install -y libstdc++6:i386 zlib1g:i386 libncurses5:i386 --no-install-recommends \
-  && yes | sdkmanager tools \
-  && yes | sdkmanager platform-tools && yes | sdkmanager "platforms;android-28"
+  && yes | sdkmanager --licenses >/dev/null \
+  && sdkmanager tools \
+  && sdkmanager platform-tools && yes | sdkmanager "platforms;android-28"
