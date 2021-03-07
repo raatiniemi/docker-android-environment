@@ -7,7 +7,7 @@ RUN set -x \
   && curl -O -Ls "https://dl.google.com/android/repository/${ANDROID_TOOLS_ZIP}" \
   && unzip -qq "${ANDROID_TOOLS_ZIP}" -d android
 
-FROM openjdk:8-stretch
+FROM openjdk:%%JAVA_VERSION%%-stretch
 LABEL maintainer="Tobias Raatiniemi <raatiniemi@gmail.com>"
 
 ENV ANDROID_HOME /opt/android-sdk
