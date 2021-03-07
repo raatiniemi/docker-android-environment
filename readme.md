@@ -7,6 +7,8 @@
 [![Docker Image Size](https://img.shields.io/docker/image-size/raatiniemi/android-environment/latest)](https://hub.docker.com/r/raatiniemi/android-environment/)
 
 Docker container image for building Android applications in an CI/CD pipeline.
+There are two variants of the image, one that use OpenJDK 8 as the base (which
+is the default) and another that use OpenJDK 11 (specified via tag name).
 
 ## Usage
 
@@ -17,6 +19,8 @@ The container image comes preinstalled with:
 
 * Android tools SDK
 * Platform tools
+
+[All the available tags are found at Docker Hub](https://hub.docker.com/repository/docker/raatiniemi/android-environment/tags).
 
 ### Install additional Android tools
 
@@ -49,6 +53,9 @@ This version is available using another tag, e.g.:
 * `android-28-latest` for the Android API 28 preinstalled.
 * `android-29-latest` for the Android API 29 preinstalled.
 * `android-30-latest` for the Android API 30 preinstalled.
+* `jdk-11-android-28-latest` for the Android API 28 preinstalled *with OpenJDK 11 as base*.
+* `jdk-11-android-29-latest` for the Android API 29 preinstalled *with OpenJDK 11 as base*.
+* `jdk-11-android-30-latest` for the Android API 30 preinstalled *with OpenJDK 11 as base*.
 
 *The build tools are not installed since these are installed when the
 `gradlew` command is executed.*
