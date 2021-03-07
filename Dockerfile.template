@@ -1,9 +1,8 @@
-FROM debian:stretch AS builder
+FROM alpine AS builder
 WORKDIR /build
 ENV ANDROID_TOOLS_ZIP "sdk-tools-linux-4333796.zip"
 RUN set -x \
-  && apt-get update \
-  && apt-get install -y curl unzip ca-certificates --no-install-recommends \
+  && apk -qU add curl unzip ca-certificates \
   && curl -O -Ls "https://dl.google.com/android/repository/${ANDROID_TOOLS_ZIP}" \
   && unzip -qq "${ANDROID_TOOLS_ZIP}" -d android
 
