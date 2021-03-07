@@ -9,7 +9,7 @@ render_template() {
     "Dockerfile.template"
 }
 
-for JAVA_VERSION in "8"; do
+for JAVA_VERSION in "8" "11"; do
   render_template "$JAVA_VERSION" >"jdk${JAVA_VERSION}/Dockerfile"
 
   for API_VERSION in "28" "29" "30"; do
