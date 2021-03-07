@@ -21,9 +21,5 @@ ENV PATH $PATH:${ANDROID_HOME}/cmdline-tools/latest/bin
 
 COPY --from=builder ${ANDROID_HOME} ${ANDROID_HOME}
 
-RUN set -x \
-  && dpkg --add-architecture i386 \
-  && apt-get update \
-  && apt-get install -y libstdc++6:i386 zlib1g:i386 libncurses5:i386 --no-install-recommends \
-  && yes | sdkmanager --licenses >/dev/null \
+RUN set -x && yes | sdkmanager --licenses >/dev/null \
   && sdkmanager platform-tools
