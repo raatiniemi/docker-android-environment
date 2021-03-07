@@ -13,7 +13,7 @@ RUN set -x \
   && yes | "${ANDROID_HOME}/tools/bin/sdkmanager" "cmdline-tools;latest" \
   && rm -rf "${ANDROID_HOME}/tools"
 
-FROM openjdk:11-stretch
+FROM openjdk:11-slim-buster
 LABEL maintainer="Tobias Raatiniemi <raatiniemi@gmail.com>"
 
 ENV ANDROID_HOME /opt/android-sdk
@@ -21,5 +21,7 @@ ENV PATH $PATH:${ANDROID_HOME}/cmdline-tools/latest/bin
 
 COPY --from=builder ${ANDROID_HOME} ${ANDROID_HOME}
 
-RUN set -x && yes | sdkmanager --licenses >/dev/null \
+RUN set -x && apt-get update -qq \
+  && apt-get install -qq -y git --no-install-recommends \
+  && yes | sdkmanager --licenses >/dev/null \
   && sdkmanager platform-tools
