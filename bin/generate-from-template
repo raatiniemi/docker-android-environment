@@ -7,14 +7,16 @@ render_template () {
   sed -e "s/ %%ANDROID_API%%/${1}/g" "Dockerfile.template";
 }
 
-render_template > "jdk8/Dockerfile";
+for JAVA_VERSION in "8"; do
+  render_template > "jdk${JAVA_VERSION}/Dockerfile";
 
-for API_VERSION in "28" "29" "30"; do
-  if [ ! -d "jdk8/${API_VERSION}" ]; then
-    echo "Create directory for version: ${API_VERSION}";
-    mkdir "jdk8/${API_VERSION}";
-  fi;
+  for API_VERSION in "28" "29" "30"; do
+    if [ ! -d "jdk${JAVA_VERSION}/${API_VERSION}" ]; then
+      echo "Create directory for version: ${API_VERSION}";
+      mkdir "jdk${JAVA_VERSION}/${API_VERSION}";
+    fi;
 
-  INSTALL_ANDROID_API="yes | sdkmanager \"platforms;android-${API_VERSION}\"";
-  render_template " \&\& ${INSTALL_ANDROID_API}" > "jdk8/${API_VERSION}/Dockerfile";
+    INSTALL_ANDROID_API="yes | sdkmanager \"platforms;android-${API_VERSION}\"";
+    render_template " \&\& ${INSTALL_ANDROID_API}" > "jdk${JAVA_VERSION}/${API_VERSION}/Dockerfile";
+  done;
 done;
