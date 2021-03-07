@@ -11,12 +11,13 @@ for JAVA_VERSION in "8"; do
   render_template > "jdk${JAVA_VERSION}/Dockerfile";
 
   for API_VERSION in "28" "29" "30"; do
-    if [ ! -d "jdk${JAVA_VERSION}/${API_VERSION}" ]; then
+    API_VERSION_DIRECTORY="jdk${JAVA_VERSION}/${API_VERSION}";
+    if [ ! -d "${API_VERSION_DIRECTORY}" ]; then
       echo "Create directory for version: ${API_VERSION}";
-      mkdir "jdk${JAVA_VERSION}/${API_VERSION}";
+      mkdir "${API_VERSION_DIRECTORY}";
     fi;
 
     INSTALL_ANDROID_API="yes | sdkmanager \"platforms;android-${API_VERSION}\"";
-    render_template " \&\& ${INSTALL_ANDROID_API}" > "jdk${JAVA_VERSION}/${API_VERSION}/Dockerfile";
+    render_template " \&\& ${INSTALL_ANDROID_API}" > "${API_VERSION_DIRECTORY}/Dockerfile";
   done;
 done;
