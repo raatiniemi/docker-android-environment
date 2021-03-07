@@ -9,12 +9,12 @@ render_template () {
 
 render_template > "jdk8/Dockerfile";
 
-for VERSION in "28" "29" "30"; do
-  if [ ! -d "jdk8/${VERSION}" ]; then
-    echo "Create directory for version: ${VERSION}";
-    mkdir "jdk8/${VERSION}";
+for API_VERSION in "28" "29" "30"; do
+  if [ ! -d "jdk8/${API_VERSION}" ]; then
+    echo "Create directory for version: ${API_VERSION}";
+    mkdir "jdk8/${API_VERSION}";
   fi;
 
-  INSTALL_ANDROID_API="yes | sdkmanager \"platforms;android-${VERSION}\"";
-  render_template " \&\& ${INSTALL_ANDROID_API}" > "jdk8/${VERSION}/Dockerfile";
+  INSTALL_ANDROID_API="yes | sdkmanager \"platforms;android-${API_VERSION}\"";
+  render_template " \&\& ${INSTALL_ANDROID_API}" > "jdk8/${API_VERSION}/Dockerfile";
 done;
