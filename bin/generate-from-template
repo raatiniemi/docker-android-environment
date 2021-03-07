@@ -9,8 +9,7 @@ render_template () {
 
 render_template > "jdk8/Dockerfile";
 
-VERSIONS=("28" "29" "30")
-for VERSION in ${VERSIONS[*]}; do
+for VERSION in "28" "29" "30"; do
   if [ ! -d "jdk8/${VERSION}" ]; then
     echo "Create directory for version: ${VERSION}";
     mkdir "jdk8/${VERSION}";
