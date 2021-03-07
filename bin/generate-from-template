@@ -14,7 +14,7 @@ for JAVA_VERSION in "8"; do
     API_VERSION_DIRECTORY="jdk${JAVA_VERSION}/${API_VERSION}";
     if [ ! -d "${API_VERSION_DIRECTORY}" ]; then
       echo "Create directory for version: ${API_VERSION}";
-      mkdir "${API_VERSION_DIRECTORY}";
+      mkdir -p "${API_VERSION_DIRECTORY}";
     fi;
 
     INSTALL_ANDROID_API="yes | sdkmanager \"platforms;android-${API_VERSION}\"";
