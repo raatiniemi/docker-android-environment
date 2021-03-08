@@ -22,6 +22,6 @@ ENV PATH $PATH:${ANDROID_HOME}/cmdline-tools/latest/bin
 COPY --from=builder ${ANDROID_HOME} ${ANDROID_HOME}
 
 RUN set -x && apt-get update -qq \
-  && apt-get install -qq -y git ssh curl --no-install-recommends \
+  && apt-get install -qq -y git ssh curl unzip --no-install-recommends \
   && yes | sdkmanager --licenses >/dev/null \
   && sdkmanager platform-tools
