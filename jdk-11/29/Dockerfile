@@ -7,7 +7,7 @@ WORKDIR /build
 ENV ANDROID_HOME /opt/android-sdk
 ENV ANDROID_TOOLS_ZIP "sdk-tools-linux-4333796.zip"
 RUN set -x \
-  && apk -qU add curl unzip ca-certificates \
+  && apk -qU add curl=7.64.0-r5 unzip=6.0-r6 ca-certificates=20191127-r2 \
   && curl -O -Ls "https://dl.google.com/android/repository/${ANDROID_TOOLS_ZIP}" \
   && unzip -qq "${ANDROID_TOOLS_ZIP}" -d "${ANDROID_HOME}" \
   && yes | "${ANDROID_HOME}/tools/bin/sdkmanager" "cmdline-tools;latest" \
@@ -22,6 +22,6 @@ ENV PATH $PATH:${ANDROID_HOME}/cmdline-tools/latest/bin
 COPY --from=builder ${ANDROID_HOME} ${ANDROID_HOME}
 
 RUN set -x && apt-get update -qq \
-  && apt-get install -qq -y git ssh curl unzip --no-install-recommends \
+  && apt-get install -qq -y git=1:2.20.1-2+deb10u3 ssh=1:7.9p1-10+deb10u1 curl=7.64.0-4+deb10u1 unzip=6.0-23+deb10u2 --no-install-recommends \
   && yes | sdkmanager --licenses >/dev/null \
   && sdkmanager platform-tools && yes | sdkmanager "platforms;android-29"
