@@ -1,0 +1,24 @@
+---
+stages:
+  - lint
+
+lint:yaml:
+  stage: lint
+  image: python:buster
+  script: |
+    test -f requirements.txt && pip install -r requirements.txt
+    yamllint -c .yamllint.yml .
+  interruptible: true
+  variables:
+    PIP_CACHE_DIR: "${CI_PROJECT_DIR}/.cache/pip"
+  tags:
+    - docker
+
+lint:dockerfile:
+  stage: lint
+  image: hadolint/hadolint:v1.23.0-3-g6eaea2a-alpine
+  script: |
+    hadolint $(find -iname Dockerfile)
+  interruptible: true
+  tags:
+    - docker
