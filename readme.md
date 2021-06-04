@@ -13,7 +13,8 @@ is the default) and another that use OpenJDK 11 (specified via tag name).
 ## Usage
 
 The [container image is available at Docker Hub](https://hub.docker.com/r/raatiniemi/android-environment/)
-via `raatiniemi/android-environment:latest`.
+via `raatiniemi/android-environment:jdk-8-latest` (or
+`raatiniemi/android-environment:jdk-11-latest` for projects using JDK 11).
 
 The container image comes preinstalled with:
 
@@ -50,9 +51,15 @@ available where the Android API have been preinstalled.
 
 This version is available using another tag, e.g.:
 
-* `android-28-latest` for the Android API 28 preinstalled.
-* `android-29-latest` for the Android API 29 preinstalled.
-* `android-30-latest` for the Android API 30 preinstalled.
+* `android-28-latest` for the Android API 28 preinstalled,
+  **deprecated use `jdk-8-android-28-latest` instead**.
+* `android-29-latest` for the Android API 29 preinstalled,
+  **deprecated use `jdk-8-android-29-latest` instead**.
+* `android-30-latest` for the Android API 30 preinstalled,
+  **deprecated use `jdk-8-android-30-latest` instead**.
+* `jdk-8-android-28-latest` for the Android API 28 preinstalled *with OpenJDK 8 as base*.
+* `jdk-8-android-29-latest` for the Android API 29 preinstalled *with OpenJDK 8 as base*.
+* `jdk-8-android-30-latest` for the Android API 30 preinstalled *with OpenJDK 8 as base*.
 * `jdk-11-android-28-latest` for the Android API 28 preinstalled *with OpenJDK 11 as base*.
 * `jdk-11-android-29-latest` for the Android API 29 preinstalled *with OpenJDK 11 as base*.
 * `jdk-11-android-30-latest` for the Android API 30 preinstalled *with OpenJDK 11 as base*.
