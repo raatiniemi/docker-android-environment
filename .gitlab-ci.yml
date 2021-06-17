@@ -16,9 +16,14 @@ lint:yaml:
 
 lint:dockerfile:
   stage: lint
-  image: hadolint/hadolint:2.5.0-alpine
+  image: "hadolint/hadolint:${HADOLINT_VERSION}"
   script: |
-    hadolint $(find -iname Dockerfile)
+    hadolint -v
+    [[ -f "${HADOLINT_CONFIG}" ]] && CONFIG_OPT="-c ${HADOLINT_CONFIG}" || CONFIG_OPT="";
+    hadolint $CONFIG_OPT $(find -iname Dockerfile)
   interruptible: true
+  variables:
+    HADOLINT_VERSION: 2.5.0-alpine
+    HADOLINT_CONFIG: hadolint.yaml
   tags:
     - docker
