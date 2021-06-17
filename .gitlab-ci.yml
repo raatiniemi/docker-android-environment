@@ -20,7 +20,7 @@ lint:dockerfile:
   script: |
     hadolint -v
     [[ -f "${HADOLINT_CONFIG}" ]] && CONFIG_OPT="-c ${HADOLINT_CONFIG}" || CONFIG_OPT="";
-    hadolint $CONFIG_OPT $(find -iname Dockerfile)
+    hadolint -V $CONFIG_OPT $(find -iname Dockerfile)
   interruptible: true
   variables:
     HADOLINT_VERSION: 2.5.0-alpine
