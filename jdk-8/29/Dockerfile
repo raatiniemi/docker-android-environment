@@ -22,6 +22,7 @@ ENV PATH $PATH:${ANDROID_HOME}/cmdline-tools/latest/bin
 COPY --from=builder ${ANDROID_HOME} ${ANDROID_HOME}
 
 RUN set -x && apt-get update -qq \
+  && apt-cache madison git ssh curl unzip \
   && apt-get install -qq -y git=1:2.20.1-2+deb10u3 ssh=1:7.9p1-10+deb10u2 curl=7.64.0-4+deb10u2 unzip=6.0-23+deb10u2 --no-install-recommends \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* \
