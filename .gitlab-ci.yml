@@ -16,7 +16,7 @@ lint:yaml:
 
 lint:dockerfile:
   stage: lint
-  image: hadolint/hadolint:v1.23.0-3-g6eaea2a-alpine
+  image: hadolint/hadolint:2.5.0-alpine
   script: |
     hadolint $(find -iname Dockerfile)
   interruptible: true
