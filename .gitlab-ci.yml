@@ -1,9 +1,12 @@
 ---
 stages:
   - lint
+  - registry
 
 include:
   - local: '/.gitlab-ci/docker.yml'
+
+# stage: lint
 
 lint:yaml:
   stage: lint
@@ -21,3 +24,17 @@ lint:docker:
   stage: lint
   extends:
     - .docker-lint
+
+# stage: registry
+
+registry:jdk-11:
+  stage: registry
+  extends:
+    - .docker-registry
+  needs:
+    - job: lint:docker
+      artifacts: false
+  variables:
+    DOCKER_REGISTRY_IMAGE: index.docker.io/raatiniemi/android-environment
+    DOCKER_TAG_PREFIX: jdk-11
+    DOCKER_FILE: jdk-11/Dockerfile
