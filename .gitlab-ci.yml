@@ -14,6 +14,7 @@ lint:yaml:
   tags:
     - docker
 
+# yamllint disable rule:line-length
 lint:dockerfile:
   stage: lint
   image: "hadolint/hadolint:${HADOLINT_VERSION}"
@@ -27,3 +28,4 @@ lint:dockerfile:
     HADOLINT_CONFIG: hadolint.yaml
   tags:
     - docker
+# yamllint enable rule:line-length
