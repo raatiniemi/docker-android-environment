@@ -1,0 +1,15 @@
+---
+# yamllint disable rule:line-length
+.docker-lint:
+  image: "hadolint/hadolint:${HADOLINT_VERSION}"
+  script: |
+    hadolint -v
+    [[ -f "${HADOLINT_CONFIG}" ]] && CONFIG_OPT="-c ${HADOLINT_CONFIG}" || CONFIG_OPT="";
+    hadolint -V $CONFIG_OPT $(find -iname Dockerfile)
+  interruptible: true
+  variables:
+    HADOLINT_VERSION: 2.5.0-alpine
+    HADOLINT_CONFIG: hadolint.yaml
+  tags:
+    - docker
+# yamllint enable rule:line-length
