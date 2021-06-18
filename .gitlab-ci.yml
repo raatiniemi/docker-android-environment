@@ -27,7 +27,7 @@ lint:docker:
 
 # stage: registry
 
-registry:
+registry:hub:
   stage: registry
   extends:
     - .docker-registry
