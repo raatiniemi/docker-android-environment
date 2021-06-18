@@ -3,22 +3,40 @@
 [![GPLv3 license](https://img.shields.io/badge/license-GPLv3-blue.svg)](license)
 [![Pipeline status](https://gitlab.com/rahome/docker-android-environment/badges/master/pipeline.svg)](https://gitlab.com/rahome/docker-android-environment/)
 
-Docker container image for building Android applications in an CI/CD pipeline.
-There are two variants of the image, one that use OpenJDK 8 as the base (which
-is the default) and another that use OpenJDK 11 (specified via tag name).
+Docker container image for building Android applications in an CI/CD pipeline,
+the container images either use OpenJDK 8 or OpenJDK 11 as the base image.
 
-## Usage
-
-The [container image is available at Docker Hub](https://hub.docker.com/r/raatiniemi/android-environment/)
-via `raatiniemi/android-environment:jdk-8-latest` (or
-`raatiniemi/android-environment:jdk-11-latest` for projects using JDK 11).
-
-The container image comes preinstalled with:
+All images include both:
 
 * Android tools SDK
 * Platform tools
 
-[All the available tags are found at Docker Hub](https://hub.docker.com/repository/docker/raatiniemi/android-environment/tags).
+Default behaviour require you as a user to install the Android API version that
+your application needs. However, there are images available with an Android API
+preinstalled which will reduce build times, see [Usage](#usage).
+
+## Usage
+
+The image is available via Docker Hub using the `raatiniemi/android-environment`
+name, see [available tags](https://hub.docker.com/r/raatiniemi/android-environment/tags).
+
+### Naming convention
+
+The tags for images include explicit versions, i.e. which JDK version should be
+used and for images with Android API preinstalled the API version is included.
+
+* `jdk-11-latest` &mdash; With only required components and OpenJDK 11.
+* `jdk-11-android-28-latest` &mdash; With Android API 28 and OpenJDK 11.
+* `jdk-11-android-29-latest` &mdash; With Android API 29 and OpenJDK 11.
+* `jdk-11-android-30-latest` &mdash; With Android API 30 and OpenJDK 11.
+* `jdk-8-latest` &mdash; With only required components and OpenJDK 8.
+* `jdk-8-android-28-latest` &mdash; With Android API 28 and OpenJDK 8.
+* `jdk-8-android-29-latest` &mdash; With Android API 29 and OpenJDK 8.
+* `jdk-8-android-30-latest` &mdash; With Android API 30 and OpenJDK 8.
+
+*Use of the `latest` tag is not recommended as it do not specify the version of
+OpenJDK to use, it currently use OpenJDK 8 but will be migrated to use OpenJDK
+11 in the future.*
 
 ### Install additional Android tools
 
@@ -41,25 +59,5 @@ accept_license_and_install "build-tools;27.0.3";
 accept_license_and_install "platforms;android-27";
 ```
 
-### Preinstalled Android API
-
-In an effort to reduce build time in an CI/CD pipeline, there is a version
-available where the Android API have been preinstalled.
-
-This version is available using another tag, e.g.:
-
-* `android-28-latest` for the Android API 28 preinstalled,
-  **deprecated use `jdk-8-android-28-latest` instead**.
-* `android-29-latest` for the Android API 29 preinstalled,
-  **deprecated use `jdk-8-android-29-latest` instead**.
-* `android-30-latest` for the Android API 30 preinstalled,
-  **deprecated use `jdk-8-android-30-latest` instead**.
-* `jdk-8-android-28-latest` for the Android API 28 preinstalled *with OpenJDK 8 as base*.
-* `jdk-8-android-29-latest` for the Android API 29 preinstalled *with OpenJDK 8 as base*.
-* `jdk-8-android-30-latest` for the Android API 30 preinstalled *with OpenJDK 8 as base*.
-* `jdk-11-android-28-latest` for the Android API 28 preinstalled *with OpenJDK 11 as base*.
-* `jdk-11-android-29-latest` for the Android API 29 preinstalled *with OpenJDK 11 as base*.
-* `jdk-11-android-30-latest` for the Android API 30 preinstalled *with OpenJDK 11 as base*.
-
-*The build tools are not installed since these are installed when the
-`gradlew` command is executed.*
+*The build tools are not installed by default since they are installed when
+the `gradlew` command is executed.*
