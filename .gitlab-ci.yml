@@ -34,6 +34,9 @@ registry:jdk-11:
   needs:
     - job: lint:docker
       artifacts: false
+  rules:
+    - changes:
+        - jdk-11/Dockerfile
   variables:
     DOCKER_REGISTRY: "${DOCKER_HUB_REGISTRY}"
     DOCKER_REGISTRY_USER: "${DOCKER_HUB_REGISTRY_USER}"
