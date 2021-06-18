@@ -38,10 +38,9 @@ registry:
     - master
   parallel:
     matrix:
-      - DOCKER_TAG_PREFIX: jdk-11-
-        DOCKER_FILE: jdk-11/Dockerfile
-      - DOCKER_TAG_PREFIX: jdk-8-
-        DOCKER_FILE: jdk-8/Dockerfile
+      - JDK_VERSION: ["jdk-11", "jdk-8"]
+        DOCKER_TAG_PREFIX: "${JDK_VERSION}-"
+        DOCKER_FILE: "${JDK_VERSION}/Dockerfile"
   variables:
     DOCKER_REGISTRY: "${DOCKER_HUB_REGISTRY}"
     DOCKER_REGISTRY_USER: "${DOCKER_HUB_REGISTRY_USER}"
