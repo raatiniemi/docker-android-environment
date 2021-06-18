@@ -6,7 +6,8 @@ RUN set -x \
   && apk -qU --no-cache add curl=7.64.0-r5 unzip=6.0-r6 ca-certificates=20191127-r2 \
   && curl -O -Ls "https://dl.google.com/android/repository/${ANDROID_TOOLS_ZIP}" \
   && unzip -qq "${ANDROID_TOOLS_ZIP}" -d "${ANDROID_HOME}" \
-  && yes | "${ANDROID_HOME}/tools/bin/sdkmanager" "cmdline-tools;latest" \
+  && yes | "${ANDROID_HOME}/tools/bin/sdkmanager" --licenses >/dev/null \
+  && "${ANDROID_HOME}/tools/bin/sdkmanager" "cmdline-tools;latest" \
   && rm -rf "${ANDROID_HOME}/tools"
 
 FROM openjdk:%%JAVA_VERSION%%-slim-buster
