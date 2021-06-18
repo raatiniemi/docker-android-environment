@@ -39,7 +39,6 @@ registry:
   parallel:
     matrix:
       - JDK_VERSION: "jdk-8"
-        DOCKER_TAG_PREFIX: ""
         DOCKER_FILE: "${JDK_VERSION}/Dockerfile"
       - JDK_VERSION: ["jdk-11", "jdk-8"]
         DOCKER_TAG_PREFIX: "${JDK_VERSION}-"
