@@ -35,7 +35,10 @@ registry:hub:
     - job: lint:docker
       artifacts: false
   only:
-    - master
+    refs:
+      - master
+    changes:
+      - "${DOCKER_FILE}"
   parallel:
     matrix:
       - JDK_VERSION: "jdk-8"
