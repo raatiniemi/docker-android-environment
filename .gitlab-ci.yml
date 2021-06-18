@@ -33,9 +33,6 @@ lint:docker:
   needs:
     - job: lint:docker
       artifacts: false
-  rules:
-    - changes:
-        - "${DOCKER_FILE}"
   variables:
     DOCKER_REGISTRY: "${DOCKER_HUB_REGISTRY}"
     DOCKER_REGISTRY_USER: "${DOCKER_HUB_REGISTRY_USER}"
