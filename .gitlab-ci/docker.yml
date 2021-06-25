@@ -7,11 +7,11 @@
     [[ -f "${HADOLINT_CONFIG}" ]] && CONFIG_OPT="-c ${HADOLINT_CONFIG}" || CONFIG_OPT="";
     hadolint -V $CONFIG_OPT $(find -iname Dockerfile)
   interruptible: true
+  tags:
+    - docker
   variables:
     HADOLINT_VERSION: 2.5.0-alpine
     HADOLINT_CONFIG: hadolint.yaml
-  tags:
-    - docker
 
 .docker-registry:
   image: docker:stable
