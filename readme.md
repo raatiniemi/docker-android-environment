@@ -61,3 +61,13 @@ accept_license_and_install "platforms;android-27";
 
 *The build tools are not installed by default since they are installed when
 the `gradlew` command is executed.*
+
+### GitLab CI
+
+If you're using GitLab CI to build your application you can include the [GitLab
+CI job template](Android.gitlab-ci.yml). The template includes a job that can
+be used as a base when building and testing where the Android SDK is required.
+
+*Please note that the template is based on my usage in
+[Worker](https://gitlab.com/rahome/worker), feel free to start an discussion
+for introducing improvements if your use case differ.*
