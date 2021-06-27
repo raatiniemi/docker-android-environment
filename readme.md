@@ -68,6 +68,21 @@ If you're using GitLab CI to build your application you can include the [GitLab
 CI job template](Android.gitlab-ci.yml). The template includes a job that can
 be used as a base when building and testing where the Android SDK is required.
 
-*Please note that the template is based on my usage in
-[Worker](https://gitlab.com/rahome/worker), feel free to start an discussion
-for introducing improvements if your use case differ.*
+The template is based on usage in [Worker](https://gitlab.com/rahome/worker).
+If your use case differ, feel free to open an issue to start a discussion.
+
+*Also, if you are depending on the template it might be a good idea to lock it
+to a specific revision to reduce the possibility of breakage.*
+
+#### `.in-android-environment`
+
+The `.in-android-environment` job uses both `before_script` and `after_script`
+to setup and tear down the environment, i.e. only `script` is available for
+your operations. Also, it's using a `docker` runner tag to target available
+runner(s).
+
+Since Android application needs to be signed you are required to expose the
+keystore in an base64 format using the environment variable `KEYSTORE_BASE64`.
+It's recommended to use the GitLab CI variables or some other means of
+populating the environment variables, **do not include the keystore in your
+`.gitlab-ci.yml` as it will be included in your git history**.
