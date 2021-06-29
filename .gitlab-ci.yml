@@ -12,15 +12,15 @@ include:
 
 # stage: lint
 
-lint:yaml:
-  stage: lint
-  extends:
-    - .yaml-lint
-
 lint:docker:
   stage: lint
   extends:
     - .docker-lint
+
+lint:yaml:
+  stage: lint
+  extends:
+    - .yaml-lint
 
 # stage: registry
 
