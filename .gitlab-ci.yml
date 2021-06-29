@@ -4,21 +4,18 @@ stages:
   - registry
 
 include:
-  - local: '/.gitlab-ci/docker.yml'
+  - project: 'rahome/gitlab-ci-templates'
+    ref: main
+    file:
+      - '/templates/Docker.gitlab-ci.yml'
+      - '/templates/Yaml.gitlab-ci.yml'
 
 # stage: lint
 
 lint:yaml:
   stage: lint
-  image: python:buster
-  script: |
-    test -f requirements.txt && pip install -r requirements.txt
-    yamllint -c .yamllint.yml .
-  interruptible: true
-  variables:
-    PIP_CACHE_DIR: "${CI_PROJECT_DIR}/.cache/pip"
-  tags:
-    - docker
+  extends:
+    - .yaml-lint
 
 lint:docker:
   stage: lint
