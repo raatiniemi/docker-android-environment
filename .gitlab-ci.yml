@@ -24,7 +24,7 @@ lint:yaml:
 
 # stage: registry
 
-registry:hub:
+registry:
   stage: registry
   extends:
     - .docker-registry
