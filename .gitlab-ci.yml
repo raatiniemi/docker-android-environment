@@ -31,11 +31,11 @@ registry:
   needs:
     - job: lint:docker
       artifacts: false
-  only:
-    refs:
-      - master
-    changes:
-      - "${DOCKER_FILE}"
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+      changes:
+        - "{DOCKER_FILE}"
+      when: on_success
   parallel:
     matrix:
       - JDK_VERSION: "jdk-8"
