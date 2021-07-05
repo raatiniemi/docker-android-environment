@@ -74,6 +74,7 @@ trivy:
   stage: trivy
   extends:
     - .trivy
+  allow_failure: true
   needs:
     - job: registry
       optional: true
