@@ -48,9 +48,6 @@ registry:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
       when: never
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
-      changes:
-        - "{DOCKER_FILE}"
-      when: on_success
   parallel:
     matrix:
       - JDK_VERSION: "jdk-8"
