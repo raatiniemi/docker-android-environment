@@ -3,7 +3,7 @@ for JAVA_VERSION in "8" "11"; do
   JDK="jdk-${JAVA_VERSION}"
   docker build -t "android-environment:${JDK}-latest" "${JDK}"
 
-  for API_VERSION in "28" "29" "30" "31"; do
+  for API_VERSION in "28" "29" "30" "31" "32"; do
     docker build -t "android-environment:${JDK}-android-${API_VERSION}-latest" "${JDK}/${API_VERSION}"
   done
 done
