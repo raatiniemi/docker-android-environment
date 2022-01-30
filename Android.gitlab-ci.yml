@@ -19,7 +19,7 @@
     - docker
   variables:
     ANDROID_HOME: "/opt/android-sdk"
-    ANDROID_API_VERSION: "31"
+    ANDROID_API_VERSION: "32"
     GRADLE_WRAPPER_DIRECTORY: "./gradle/wrapper"
     GRADLE_OPTS: "-Dorg.gradle.daemon=false"
     JDK_VERSION: "8"
