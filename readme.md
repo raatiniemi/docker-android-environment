@@ -71,7 +71,7 @@ be used as a base when building and testing where the Android SDK is required.
 The template is based on usage in [Worker](https://gitlab.com/rahome/worker).
 If your use case differ, feel free to open an issue to start a discussion.
 
-*Also, if you are depending on the template it might be a good idea to lock it
+*Also, if you depend on the template it might be a good idea to lock it
 to a specific revision to reduce the possibility of breakage.*
 
 #### `.in-android-environment`
