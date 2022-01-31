@@ -2,12 +2,13 @@
 stages:
   - lint
   - registry
-  - trivy
+  - sast
 
 include:
   - project: 'rahome/gitlab-ci-templates'
     ref: main
     file:
+      - '/templates/Checkov.gitlab-ci.yml'
       - '/templates/Docker.gitlab-ci.yml'
       - '/templates/Yaml.gitlab-ci.yml'
   - project: 'rahome/trivy-cache'
@@ -65,10 +66,25 @@ registry:
     DOCKER_REGISTRY_PASSWORD: "${DOCKER_HUB_REGISTRY_PASSWORD}"
     DOCKER_REGISTRY_IMAGE: index.docker.io/raatiniemi/android-environment
 
-# stage: trivy
+# stage: sast
 
-trivy:
-  stage: trivy
+sast:checkov:
+  stage: sast
+  extends:
+    - .checkov-junit
+  needs: []
+  parallel:
+    matrix:
+      - JDK_VERSION: ["jdk-11", "jdk-8"]
+        DOCKER_FILE: "${JDK_VERSION}/Dockerfile"
+      - JDK_VERSION: ["jdk-11", "jdk-8"]
+        ANDROID_API_VERSION: [28, 29, 30, 31, 32]
+        DOCKER_FILE: "${JDK_VERSION}/${ANDROID_API_VERSION}/Dockerfile"
+  variables:
+    CHECKOV_COMMAND: "-f ${DOCKER_FILE}"
+
+sast:trivy:
+  stage: sast
   extends:
     - .trivy
   allow_failure: true
