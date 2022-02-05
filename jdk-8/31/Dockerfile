@@ -5,14 +5,13 @@
 FROM openjdk:8-alpine AS builder
 WORKDIR /build
 ENV ANDROID_HOME /opt/android-sdk
-ENV ANDROID_TOOLS_ZIP "sdk-tools-linux-4333796.zip"
+ENV ANDROID_CMDLINE_TOOLS_ZIP "commandlinetools-linux-8092744_latest.zip"
 RUN set -x \
   && apk -qU --no-cache add curl=7.64.0-r5 unzip=6.0-r6 ca-certificates=20191127-r2 \
-  && curl -O -Ls "https://dl.google.com/android/repository/${ANDROID_TOOLS_ZIP}" \
-  && unzip -qq "${ANDROID_TOOLS_ZIP}" -d "${ANDROID_HOME}" \
-  && yes | "${ANDROID_HOME}/tools/bin/sdkmanager" --licenses >/dev/null \
-  && "${ANDROID_HOME}/tools/bin/sdkmanager" "cmdline-tools;latest" \
-  && rm -rf "${ANDROID_HOME}/tools"
+  && curl -O -Ls "https://dl.google.com/android/repository/${ANDROID_CMDLINE_TOOLS_ZIP}" \
+  && unzip -qq "${ANDROID_CMDLINE_TOOLS_ZIP}" \
+  && mkdir -p "${ANDROID_HOME}/cmdline-tools" \
+  && mv cmdline-tools "${ANDROID_HOME}/cmdline-tools/latest"
 
 FROM openjdk:8-slim-bullseye
 LABEL maintainer="Tobias Raatiniemi <raatiniemi@gmail.com>"
