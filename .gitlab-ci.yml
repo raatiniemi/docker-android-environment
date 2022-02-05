@@ -1,9 +1,4 @@
 ---
-stages:
-  - lint
-  - registry
-  - sast
-
 include:
   - project: 'rahome/gitlab-ci-templates'
     ref: main
@@ -16,10 +11,7 @@ include:
     file:
       - '/Trivy.gitlab-ci.yml'
 
-# stage: lint
-
 lint:docker:
-  stage: lint
   extends:
     - .docker-lint
   rules:
@@ -28,7 +20,6 @@ lint:docker:
     - when: on_success
 
 lint:yaml:
-  stage: lint
   extends:
     - .yaml-lint
   rules:
@@ -36,10 +27,7 @@ lint:yaml:
       when: never
     - when: on_success
 
-# stage: registry
-
 registry:
-  stage: registry
   extends:
     - .docker-registry
   needs:
@@ -66,10 +54,7 @@ registry:
     DOCKER_REGISTRY_PASSWORD: "${DOCKER_HUB_REGISTRY_PASSWORD}"
     DOCKER_REGISTRY_IMAGE: index.docker.io/raatiniemi/android-environment
 
-# stage: sast
-
 sast:checkov:
-  stage: sast
   extends:
     - .checkov-junit
   needs: []
@@ -88,7 +73,6 @@ sast:checkov:
     CHECKOV_COMMAND: "-f ${DOCKER_FILE}"
 
 sast:trivy:
-  stage: sast
   extends:
     - .trivy
   allow_failure: true
