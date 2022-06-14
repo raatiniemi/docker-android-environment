@@ -35,13 +35,10 @@ prepare-sdk-artifacts:
     mkdir /build && cd /build
     curl -O -Ls "https://dl.google.com/android/repository/${ANDROID_CMDLINE_TOOLS_ZIP}"
     unzip -qq "${ANDROID_CMDLINE_TOOLS_ZIP}"
-    mkdir -p "${ANDROID_HOME}/cmdline-tools"
-    mv cmdline-tools "${ANDROID_HOME}/cmdline-tools/latest"
   artifacts:
     paths:
-      - "${ANDROID_HOME}"
+      - cmdline-tools
   variables:
-    ANDROID_HOME: /opt/android-sdk
     ANDROID_CMDLINE_TOOLS_ZIP: commandlinetools-linux-8092744_latest.zip
 
 registry:
