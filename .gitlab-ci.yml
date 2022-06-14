@@ -27,12 +27,28 @@ lint:yaml:
       when: never
     - when: on_success
 
+# yamllint disable rule:line-length
+prepare-sdk-artifacts:
+  image: alpine:3.16.0
+  before_script:
+    - apk -qU --no-cache add curl unzip ca-certificates
+  script: |
+    curl -O -Ls "https://dl.google.com/android/repository/${ANDROID_CMDLINE_TOOLS_ZIP}"
+    unzip -qq "${ANDROID_CMDLINE_TOOLS_ZIP}"
+  artifacts:
+    paths:
+      - cmdline-tools
+  variables:
+    ANDROID_CMDLINE_TOOLS_ZIP: commandlinetools-linux-8092744_latest.zip
+# yamllint enable rule:line-length
+
 registry:
   extends:
     - .docker-registry
   needs:
     - job: lint:docker
       artifacts: false
+    - job: prepare-sdk-artifacts
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
       when: never

@@ -1,21 +1,11 @@
-FROM alpine:3.15.0 AS builder
-WORKDIR /build
-ENV ANDROID_HOME /opt/android-sdk
-ENV ANDROID_CMDLINE_TOOLS_ZIP "commandlinetools-linux-8092744_latest.zip"
-RUN set -x \
-  && apk -qU --no-cache add curl=7.80.0-r0 unzip=6.0-r9 ca-certificates=20211220-r0 \
-  && curl -O -Ls "https://dl.google.com/android/repository/${ANDROID_CMDLINE_TOOLS_ZIP}" \
-  && unzip -qq "${ANDROID_CMDLINE_TOOLS_ZIP}" \
-  && mkdir -p "${ANDROID_HOME}/cmdline-tools" \
-  && mv cmdline-tools "${ANDROID_HOME}/cmdline-tools/latest"
-
 FROM openjdk:%%JAVA_VERSION%%-slim-bullseye
 LABEL maintainer="Tobias Raatiniemi <raatiniemi@gmail.com>"
 
 ENV ANDROID_HOME /opt/android-sdk
 ENV PATH $PATH:${ANDROID_HOME}/cmdline-tools/latest/bin
 
-COPY --from=builder ${ANDROID_HOME} ${ANDROID_HOME}
+RUN set -x && mkdir -p "${ANDROID_HOME}/cmdline-tools"
+COPY cmdline-tools "${ANDROID_HOME}/cmdline-tools/latest"
 
 RUN set -x && apt-get update -qq \
   && apt-cache madison git ssh curl unzip libgnutls30 liblz4-1 libgcrypt20 libhogweed6 libnettle8 \
