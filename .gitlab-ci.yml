@@ -46,6 +46,7 @@ registry:
   needs:
     - job: lint:docker
       artifacts: false
+    - job: prepare-sdk-artifacts
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
       when: never
