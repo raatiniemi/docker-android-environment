@@ -13,7 +13,7 @@ for JAVA_VERSION in "8" "11"; do
   JDK="jdk-${JAVA_VERSION}"
   render_template "$JAVA_VERSION" >"${JDK}/Dockerfile"
 
-  for API_VERSION in "28" "29" "30" "31" "32" "33"; do
+  for API_VERSION in "31" "32" "33"; do
     API_VERSION_DIRECTORY="${JDK}/${API_VERSION}"
     if [ ! -d "${API_VERSION_DIRECTORY}" ]; then
       echo "Create directory for version: ${API_VERSION}"
