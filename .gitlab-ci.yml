@@ -11,25 +11,15 @@ include:
     file:
       - '/Trivy.gitlab-ci.yml'
 
-lint:docker:
-  extends:
-    - .docker-lint
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "schedule"'
-      when: never
-    - when: on_success
-
-lint:yaml:
-  extends:
-    - .yaml-lint
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "schedule"'
-      when: never
-    - when: on_success
-
 # yamllint disable rule:line-length
-prepare-sdk-artifacts:
-  image: alpine:3.16.0
+pre-sdk-artifacts:
+  stage: .pre
+  image: alpine:3.17.3
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  needs: []
   before_script:
     - apk -qU --no-cache add curl unzip ca-certificates
   script: |
@@ -42,17 +32,16 @@ prepare-sdk-artifacts:
     ANDROID_CMDLINE_TOOLS_ZIP: commandlinetools-linux-8092744_latest.zip
 # yamllint enable rule:line-length
 
-registry:
-  extends:
-    - .docker-registry
-  needs:
-    - job: lint:docker
-      artifacts: false
-    - job: prepare-sdk-artifacts
+build:docker:
+  stage: build
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
       when: never
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  extends:
+    - .docker-registry
+  needs:
+    - job: pre-sdk-artifacts
   parallel:
     matrix:
       - JDK_VERSION: "jdk-8"
@@ -70,14 +59,15 @@ registry:
     DOCKER_REGISTRY_PASSWORD: "${DOCKER_HUB_REGISTRY_PASSWORD}"
     DOCKER_REGISTRY_IMAGE: index.docker.io/raatiniemi/android-environment
 
-sast:checkov:
-  extends:
-    - .checkov-junit
-  needs: []
+test:checkov:
+  stage: test
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
       when: never
-    - when: on_success
+    - if: '$CI_COMMIT_BRANCH'
+  extends:
+    - .checkov-junit
+  needs: []
   parallel:
     matrix:
       - JDK_VERSION: ["jdk-11", "jdk-8"]
@@ -88,18 +78,29 @@ sast:checkov:
   variables:
     CHECKOV_COMMAND: "-f ${DOCKER_FILE}"
 
-sast:trivy:
+test:docker:
+  stage: test
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH'
   extends:
-    - .trivy
-  allow_failure: true
-  needs:
-    - job: registry
-      optional: true
-      artifacts: false
+    - .docker-lint
+  needs: []
+
+test:trivy:
+  stage: test
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
       when: always
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  extends:
+    - .trivy
+  needs:
+    - job: build:docker
+      optional: true
+      artifacts: false
+  allow_failure: true
   parallel:
     matrix:
       - JDK_VERSION: "jdk-8"
@@ -113,3 +114,13 @@ sast:trivy:
     TRIVY_USERNAME: "${DOCKER_HUB_REGISTRY_USER}"
     TRIVY_PASSWORD: "${DOCKER_HUB_REGISTRY_PASSWORD}"
     CI_REGISTRY_IMAGE: index.docker.io/raatiniemi/android-environment
+
+test:yaml:
+  stage: test
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH'
+  extends:
+    - .yaml-lint
+  needs: []
