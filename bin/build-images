@@ -2,7 +2,7 @@
 curl -O -Ls https://dl.google.com/android/repository/commandlinetools-linux-8092744_latest.zip
 unzip -qq commandlinetools-linux-8092744_latest.zip
 
-for JAVA_VERSION in "8" "11"; do
+for JAVA_VERSION in "8" "11" "17"; do
   JDK="jdk-${JAVA_VERSION}"
   docker build -t "android-environment:${JDK}-latest" -f "${JDK}/Dockerfile" .
 

@@ -46,10 +46,10 @@ build:docker:
     matrix:
       - JDK_VERSION: "jdk-8"
         DOCKER_FILE: "${JDK_VERSION}/Dockerfile"
-      - JDK_VERSION: ["jdk-11", "jdk-8"]
+      - JDK_VERSION: ["jdk-17", "jdk-11", "jdk-8"]
         DOCKER_TAG_PREFIX: "${JDK_VERSION}-"
         DOCKER_FILE: "${JDK_VERSION}/Dockerfile"
-      - JDK_VERSION: ["jdk-11", "jdk-8"]
+      - JDK_VERSION: ["jdk-17", "jdk-11", "jdk-8"]
         ANDROID_API_VERSION: [31, 32, 33]
         DOCKER_TAG_PREFIX: "${JDK_VERSION}-android-${ANDROID_API_VERSION}-"
         DOCKER_FILE: "${JDK_VERSION}/${ANDROID_API_VERSION}/Dockerfile"
@@ -70,9 +70,9 @@ test:checkov:
   needs: []
   parallel:
     matrix:
-      - JDK_VERSION: ["jdk-11", "jdk-8"]
+      - JDK_VERSION: ["jdk-17", "jdk-11", "jdk-8"]
         DOCKER_FILE: "${JDK_VERSION}/Dockerfile"
-      - JDK_VERSION: ["jdk-11", "jdk-8"]
+      - JDK_VERSION: ["jdk-17", "jdk-11", "jdk-8"]
         ANDROID_API_VERSION: [31, 32, 33]
         DOCKER_FILE: "${JDK_VERSION}/${ANDROID_API_VERSION}/Dockerfile"
   variables:
@@ -104,9 +104,9 @@ test:trivy:
   parallel:
     matrix:
       - JDK_VERSION: "jdk-8"
-      - JDK_VERSION: ["jdk-11", "jdk-8"]
+      - JDK_VERSION: ["jdk-17", "jdk-11", "jdk-8"]
         DOCKER_TAG_PREFIX: "${JDK_VERSION}-"
-      - JDK_VERSION: ["jdk-11", "jdk-8"]
+      - JDK_VERSION: ["jdk-17", "jdk-11", "jdk-8"]
         ANDROID_API_VERSION: [31, 32, 33]
         DOCKER_TAG_PREFIX: "${JDK_VERSION}-android-${ANDROID_API_VERSION}-"
   variables:
