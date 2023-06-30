@@ -19,7 +19,7 @@
     - docker
   variables:
     ANDROID_HOME: "/opt/android-sdk"
-    ANDROID_API_VERSION: "32"
+    ANDROID_API_VERSION: "34"
     GRADLE_WRAPPER_DIRECTORY: "./gradle/wrapper"
     JDK_VERSION: "17"
     KEYSTORE_PATH: "app/upload.jks"
