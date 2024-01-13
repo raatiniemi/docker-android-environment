@@ -25,18 +25,30 @@ name, see [available tags](https://hub.docker.com/r/raatiniemi/android-environme
 The tags for images include explicit versions, i.e. which JDK version should be
 used and for images with Android API preinstalled the API version is included.
 
+* `jdk-17-latest` &mdash; With only required components and OpenJDK 17.
+* `jdk-17-android-28-latest` &mdash; With Android API 28 and OpenJDK 17.
+* `jdk-17-android-29-latest` &mdash; With Android API 29 and OpenJDK 17.
+* `jdk-17-android-30-latest` &mdash; With Android API 30 and OpenJDK 17.
+* `jdk-17-android-31-latest` &mdash; With Android API 31 and OpenJDK 17.
+* `jdk-17-android-32-latest` &mdash; With Android API 32 and OpenJDK 17.
+* `jdk-17-android-33-latest` &mdash; With Android API 33 and OpenJDK 17.
+* `jdk-17-android-34-latest` &mdash; With Android API 34 and OpenJDK 17.
 * `jdk-11-latest` &mdash; With only required components and OpenJDK 11.
 * `jdk-11-android-28-latest` &mdash; With Android API 28 and OpenJDK 11.
 * `jdk-11-android-29-latest` &mdash; With Android API 29 and OpenJDK 11.
 * `jdk-11-android-30-latest` &mdash; With Android API 30 and OpenJDK 11.
 * `jdk-11-android-31-latest` &mdash; With Android API 31 and OpenJDK 11.
 * `jdk-11-android-32-latest` &mdash; With Android API 32 and OpenJDK 11.
+* `jdk-11-android-33-latest` &mdash; With Android API 33 and OpenJDK 11.
+* `jdk-11-android-34-latest` &mdash; With Android API 34 and OpenJDK 11.
 * `jdk-8-latest` &mdash; With only required components and OpenJDK 8.
 * `jdk-8-android-28-latest` &mdash; With Android API 28 and OpenJDK 8.
 * `jdk-8-android-29-latest` &mdash; With Android API 29 and OpenJDK 8.
 * `jdk-8-android-30-latest` &mdash; With Android API 30 and OpenJDK 8.
 * `jdk-8-android-31-latest` &mdash; With Android API 31 and OpenJDK 8.
 * `jdk-8-android-32-latest` &mdash; With Android API 32 and OpenJDK 8.
+* `jdk-8-android-33-latest` &mdash; With Android API 33 and OpenJDK 8.
+* `jdk-8-android-34-latest` &mdash; With Android API 34 and OpenJDK 8.
 
 *Use of the `latest` tag is not recommended as it do not specify the version of
 OpenJDK to use, it currently use OpenJDK 8 but will be migrated to use OpenJDK
