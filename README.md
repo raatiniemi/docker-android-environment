@@ -3,8 +3,8 @@
 [![GPLv3 license](https://img.shields.io/badge/license-GPLv3-blue.svg)](license)
 [![Pipeline status](https://gitlab.com/rahome/docker-android-environment/badges/master/pipeline.svg)](https://gitlab.com/rahome/docker-android-environment/)
 
-Docker container image for building Android applications in an CI/CD pipeline,
-the container images either use OpenJDK 8 or OpenJDK 11 as the base image.
+Docker container image for building Android applications in an CI/CD pipeline, the container images either use JDK 8,
+JDK 11, or JDK 17 as the base image.
 
 All images include both:
 
@@ -25,34 +25,33 @@ name, see [available tags](https://hub.docker.com/r/raatiniemi/android-environme
 The tags for images include explicit versions, i.e. which JDK version should be
 used and for images with Android API preinstalled the API version is included.
 
-* `jdk-17-latest` &mdash; With only required components and OpenJDK 17.
-* `jdk-17-android-28-latest` &mdash; With Android API 28 and OpenJDK 17.
-* `jdk-17-android-29-latest` &mdash; With Android API 29 and OpenJDK 17.
-* `jdk-17-android-30-latest` &mdash; With Android API 30 and OpenJDK 17.
-* `jdk-17-android-31-latest` &mdash; With Android API 31 and OpenJDK 17.
-* `jdk-17-android-32-latest` &mdash; With Android API 32 and OpenJDK 17.
-* `jdk-17-android-33-latest` &mdash; With Android API 33 and OpenJDK 17.
-* `jdk-17-android-34-latest` &mdash; With Android API 34 and OpenJDK 17.
-* `jdk-11-latest` &mdash; With only required components and OpenJDK 11.
-* `jdk-11-android-28-latest` &mdash; With Android API 28 and OpenJDK 11.
-* `jdk-11-android-29-latest` &mdash; With Android API 29 and OpenJDK 11.
-* `jdk-11-android-30-latest` &mdash; With Android API 30 and OpenJDK 11.
-* `jdk-11-android-31-latest` &mdash; With Android API 31 and OpenJDK 11.
-* `jdk-11-android-32-latest` &mdash; With Android API 32 and OpenJDK 11.
-* `jdk-11-android-33-latest` &mdash; With Android API 33 and OpenJDK 11.
-* `jdk-11-android-34-latest` &mdash; With Android API 34 and OpenJDK 11.
-* `jdk-8-latest` &mdash; With only required components and OpenJDK 8.
-* `jdk-8-android-28-latest` &mdash; With Android API 28 and OpenJDK 8.
-* `jdk-8-android-29-latest` &mdash; With Android API 29 and OpenJDK 8.
-* `jdk-8-android-30-latest` &mdash; With Android API 30 and OpenJDK 8.
-* `jdk-8-android-31-latest` &mdash; With Android API 31 and OpenJDK 8.
-* `jdk-8-android-32-latest` &mdash; With Android API 32 and OpenJDK 8.
-* `jdk-8-android-33-latest` &mdash; With Android API 33 and OpenJDK 8.
-* `jdk-8-android-34-latest` &mdash; With Android API 34 and OpenJDK 8.
+* `jdk-17-latest` &mdash; With only required components and JDK 17.
+* `jdk-17-android-28-latest` &mdash; With Android API 28 and JDK 17.
+* `jdk-17-android-29-latest` &mdash; With Android API 29 and JDK 17.
+* `jdk-17-android-30-latest` &mdash; With Android API 30 and JDK 17.
+* `jdk-17-android-31-latest` &mdash; With Android API 31 and JDK 17.
+* `jdk-17-android-32-latest` &mdash; With Android API 32 and JDK 17.
+* `jdk-17-android-33-latest` &mdash; With Android API 33 and JDK 17.
+* `jdk-17-android-34-latest` &mdash; With Android API 34 and JDK 17.
+* `jdk-11-latest` &mdash; With only required components and JDK 11.
+* `jdk-11-android-28-latest` &mdash; With Android API 28 and JDK 11.
+* `jdk-11-android-29-latest` &mdash; With Android API 29 and JDK 11.
+* `jdk-11-android-30-latest` &mdash; With Android API 30 and JDK 11.
+* `jdk-11-android-31-latest` &mdash; With Android API 31 and JDK 11.
+* `jdk-11-android-32-latest` &mdash; With Android API 32 and JDK 11.
+* `jdk-11-android-33-latest` &mdash; With Android API 33 and JDK 11.
+* `jdk-11-android-34-latest` &mdash; With Android API 34 and JDK 11.
+* `jdk-8-latest` &mdash; With only required components and JDK 8.
+* `jdk-8-android-28-latest` &mdash; With Android API 28 and JDK 8.
+* `jdk-8-android-29-latest` &mdash; With Android API 29 and JDK 8.
+* `jdk-8-android-30-latest` &mdash; With Android API 30 and JDK 8.
+* `jdk-8-android-31-latest` &mdash; With Android API 31 and JDK 8.
+* `jdk-8-android-32-latest` &mdash; With Android API 32 and JDK 8.
+* `jdk-8-android-33-latest` &mdash; With Android API 33 and JDK 8.
+* `jdk-8-android-34-latest` &mdash; With Android API 34 and JDK 8.
 
-*Use of the `latest` tag is not recommended as it do not specify the version of
-OpenJDK to use, it currently use OpenJDK 8 but will be migrated to use OpenJDK
-11 in the future.*
+*Use of the `latest` tag is not recommended as it do not specify the version of JDK to use, it currently uses JDK 8 but
+will be migrated to use JDK 11 in the future.*
 
 ### Install additional Android tools
 
