@@ -4,3 +4,6 @@ extends: default
 ignore: |
   .cache
   venv
+
+rules:
+  line-length: disable

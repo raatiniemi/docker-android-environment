@@ -11,7 +11,6 @@ include:
     file:
       - '/Trivy.gitlab-ci.yml'
 
-# yamllint disable rule:line-length
 pre-sdk-artifacts:
   stage: .pre
   image: alpine:3.17.3
@@ -30,7 +29,6 @@ pre-sdk-artifacts:
       - cmdline-tools
   variables:
     ANDROID_CMDLINE_TOOLS_ZIP: commandlinetools-linux-8092744_latest.zip
-# yamllint enable rule:line-length
 
 build:docker:
   stage: build

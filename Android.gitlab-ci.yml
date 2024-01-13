@@ -1,5 +1,4 @@
 ---
-# yamllint disable rule:line-length
 .in-android-environment:
   image: "raatiniemi/android-environment:jdk-${JDK_VERSION}-android-${ANDROID_API_VERSION}-latest"
   before_script:
@@ -23,4 +22,3 @@
     GRADLE_WRAPPER_DIRECTORY: "./gradle/wrapper"
     JDK_VERSION: "17"
     KEYSTORE_PATH: "app/upload.jks"
-# yamllint enable rule:line-length
