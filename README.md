@@ -33,6 +33,7 @@ used and for images with Android API preinstalled the API version is included.
 * `jdk-17-android-32-latest` &mdash; With Android API 32 and JDK 17.
 * `jdk-17-android-33-latest` &mdash; With Android API 33 and JDK 17.
 * `jdk-17-android-34-latest` &mdash; With Android API 34 and JDK 17.
+* `jdk-17-android-35-latest` &mdash; With Android API 35 and JDK 17.
 * `jdk-11-latest` &mdash; With only required components and JDK 11.
 * `jdk-11-android-28-latest` &mdash; With Android API 28 and JDK 11.
 * `jdk-11-android-29-latest` &mdash; With Android API 29 and JDK 11.
@@ -41,6 +42,7 @@ used and for images with Android API preinstalled the API version is included.
 * `jdk-11-android-32-latest` &mdash; With Android API 32 and JDK 11.
 * `jdk-11-android-33-latest` &mdash; With Android API 33 and JDK 11.
 * `jdk-11-android-34-latest` &mdash; With Android API 34 and JDK 11.
+* `jdk-11-android-35-latest` &mdash; With Android API 35 and JDK 11.
 * `jdk-8-latest` &mdash; With only required components and JDK 8.
 * `jdk-8-android-28-latest` &mdash; With Android API 28 and JDK 8.
 * `jdk-8-android-29-latest` &mdash; With Android API 29 and JDK 8.
@@ -49,6 +51,7 @@ used and for images with Android API preinstalled the API version is included.
 * `jdk-8-android-32-latest` &mdash; With Android API 32 and JDK 8.
 * `jdk-8-android-33-latest` &mdash; With Android API 33 and JDK 8.
 * `jdk-8-android-34-latest` &mdash; With Android API 34 and JDK 8.
+* `jdk-8-android-35-latest` &mdash; With Android API 35 and JDK 8.
 
 *Use of the `latest` tag is not recommended as it do not specify the version of JDK to use, it currently uses JDK 8 but
 will be migrated to use JDK 11 in the future.*
