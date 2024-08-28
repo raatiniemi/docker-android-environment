@@ -48,7 +48,7 @@ build:docker:
         DOCKER_TAG_PREFIX: "${JDK_VERSION}-"
         DOCKER_FILE: "${JDK_VERSION}/Dockerfile"
       - JDK_VERSION: ["jdk-17", "jdk-11", "jdk-8"]
-        ANDROID_API_VERSION: [31, 32, 33, 34]
+        ANDROID_API_VERSION: [31, 32, 33, 34, 35]
         DOCKER_TAG_PREFIX: "${JDK_VERSION}-android-${ANDROID_API_VERSION}-"
         DOCKER_FILE: "${JDK_VERSION}/${ANDROID_API_VERSION}/Dockerfile"
   variables:
@@ -71,7 +71,7 @@ test:checkov:
       - JDK_VERSION: ["jdk-17", "jdk-11", "jdk-8"]
         DOCKER_FILE: "${JDK_VERSION}/Dockerfile"
       - JDK_VERSION: ["jdk-17", "jdk-11", "jdk-8"]
-        ANDROID_API_VERSION: [31, 32, 33, 34]
+        ANDROID_API_VERSION: [31, 32, 33, 34, 35]
         DOCKER_FILE: "${JDK_VERSION}/${ANDROID_API_VERSION}/Dockerfile"
   variables:
     CHECKOV_COMMAND: "-f ${DOCKER_FILE}"
@@ -105,7 +105,7 @@ test:trivy:
       - JDK_VERSION: ["jdk-17", "jdk-11", "jdk-8"]
         DOCKER_TAG_PREFIX: "${JDK_VERSION}-"
       - JDK_VERSION: ["jdk-17", "jdk-11", "jdk-8"]
-        ANDROID_API_VERSION: [31, 32, 33, 34]
+        ANDROID_API_VERSION: [31, 32, 33, 34, 35]
         DOCKER_TAG_PREFIX: "${JDK_VERSION}-android-${ANDROID_API_VERSION}-"
   variables:
     TRIVY_AUTH_URL: "${DOCKER_HUB_REGISTRY}"
