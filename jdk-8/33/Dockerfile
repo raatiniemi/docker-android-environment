@@ -13,7 +13,7 @@ COPY cmdline-tools "${ANDROID_HOME}/cmdline-tools/latest"
 
 RUN set -x && apt-get update -qq \
   && apt-cache madison git ssh curl unzip libgnutls30 liblz4-1 libgcrypt20 libhogweed6 libnettle8 \
-  && apt-get install -qq -y git=1:2.34.1-1ubuntu1.11 ssh=1:8.9p1-3ubuntu0.10 curl=7.81.0-1ubuntu1.17 unzip=6.0-26ubuntu3.2 libgnutls30=3.7.3-4ubuntu1.5 liblz4-1=1.9.3-2build2 libgcrypt20=1.9.4-3ubuntu3 libhogweed6=3.7.3-1build2 libnettle8=3.7.3-1build2 --no-install-recommends \
+  && apt-get install -qq -y git=1:2.34.1-1ubuntu1.15 ssh=1:8.9p1-3ubuntu0.10 curl=7.81.0-1ubuntu1.17 unzip=6.0-26ubuntu3.2 libgnutls30=3.7.3-4ubuntu1.5 liblz4-1=1.9.3-2build2 libgcrypt20=1.9.4-3ubuntu3 libhogweed6=3.7.3-1build2 libnettle8=3.7.3-1build2 --no-install-recommends \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* \
   && yes | sdkmanager --licenses >/dev/null \
